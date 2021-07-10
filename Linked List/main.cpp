@@ -20,58 +20,68 @@ public:
 
     // Function to insert in begin
     void insertAtBegin(t newItem){
-        Node<t>* newNode = new Node<t>;
-        newNode->value = newItem;
-        if (front == NULL){
-            newNode->nxt = NULL;
-            front = back = newNode;
+        try {
+            Node<t> *newNode = new Node<t>;
+            newNode->value = newItem;
+            if (front == NULL) {
+                newNode->nxt = NULL;
+                front = back = newNode;
+            } else {
+                newNode->nxt = front;
+                front = newNode;
+            }
+            ++length;
         }
-        else {
-            newNode->nxt = front;
-            front = newNode;
+        catch (exception e){
+            throw "Linked List is Full";
         }
-        ++length;
     }
 
     // Function to insert in begin
     void insertAtEnd(t newItem){
-        Node<t>* newNode = new Node<t>;
-        newNode->value = newItem;
-        if (front == NULL){
-            newNode->nxt = NULL;
-            front = back = newNode;
+        try {
+            Node<t> *newNode = new Node<t>;
+            newNode->value = newItem;
+            if (front == NULL) {
+                newNode->nxt = NULL;
+                front = back = newNode;
+            } else {
+                back->nxt = newNode;
+                newNode->nxt = NULL;
+                back = newNode;
+            }
+            ++length;
         }
-        else {
-            back->nxt = newNode;
-            newNode ->nxt = NULL;
-            back = newNode;
+        catch (exception e){
+            throw "Linked List is Full";
         }
-        ++length;
     }
 
     // Function to insert item in position
     void insertAtPos(int pos,t newItem){
-        if (pos > length || pos < 0){
-            throw "out of range";
-        }
-        else {
-            if (pos == 0){
-                insertAtBegin(newItem);
-            }
-            else if (pos == length){
-                insertAtEnd(newItem);
-            }
-            else {
-                Node<t>* newNode = new Node<t>;
-                newNode->value = newItem;
-                Node<t>* cur = front;
-                for (int i=1;i<pos;++i){
-                    cur = cur->nxt;
+        try {
+            if (pos > length || pos < 0) {
+                throw "out of range";
+            } else {
+                if (pos == 0) {
+                    insertAtBegin(newItem);
+                } else if (pos == length) {
+                    insertAtEnd(newItem);
+                } else {
+                    Node<t> *newNode = new Node<t>;
+                    newNode->value = newItem;
+                    Node<t> *cur = front;
+                    for (int i = 1; i < pos; ++i) {
+                        cur = cur->nxt;
+                    }
+                    newNode->nxt = cur->nxt;
+                    cur->nxt = newNode;
+                    ++length;
                 }
-                newNode->nxt = cur->nxt;
-                cur ->nxt = newNode;
-                ++length;
             }
+        }
+        catch (exception e){
+            throw "Linked List is Full";
         }
     }
 
