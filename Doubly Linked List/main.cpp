@@ -22,52 +22,57 @@ public:
     // Function to add elements at begin of List
     void insertFirst(int item)
     {
-        Node<t>*newNode = new Node<t>;
-        newNode->item = item;
-        if (front == NULL) {
-            front = back = newNode;
-            newNode->next = newNode->prev = NULL;
-        }
-        else {
-            newNode->next = front;
-            newNode->prev = NULL;
-            front->prev = newNode;
-            front = newNode;
+        try {
+            Node<t> *newNode = new Node<t>;
+            newNode->item = item;
+            if (front == NULL) {
+                front = back = newNode;
+                newNode->next = newNode->prev = NULL;
+            } else {
+                newNode->next = front;
+                newNode->prev = NULL;
+                front->prev = newNode;
+                front = newNode;
 
+            }
+            ++length;
         }
-        ++length;
+        catch (exception e){
+            throw "List is Full";
+        }
     }
     // Function to add elements at end of List
     void insertLast(t newItem) {
-        Node<t>* newNode = new Node<t>;
-        newNode->item = newItem;
-        if (front == NULL) {
-            front = back = newNode;
-            newNode->next = newNode->prev = NULL;
+        try {
+            Node<t> *newNode = new Node<t>;
+            newNode->item = newItem;
+            if (front == NULL) {
+                front = back = newNode;
+                newNode->next = newNode->prev = NULL;
+            } else {
+                newNode->next = NULL;
+                newNode->prev = back;
+                back->next = newNode;
+                back = newNode;
+            }
+            ++length;
         }
-        else {
-            newNode->next = NULL;
-            newNode->prev = back;
-            back->next = newNode;
-            back = newNode;
+        catch (exception e){
+            throw "List is Full";
         }
-        ++length;
     }
 
     void insertAtPos(int pos, int item){
-        if (pos < 0 || pos > length) {
-            throw "Out Of Range!";
-        }
-        else if (pos == 0) {
-            insertFirst(item);
-        }
-        else if (pos == length) {
-            insertLast(item);
-        }
-        else
-        {
-            Node<t> *newNode = new Node<t>;
-            newNode->item = item;
+        try {
+            if (pos < 0 || pos > length) {
+                throw "Out Of Range!";
+            } else if (pos == 0) {
+                insertFirst(item);
+            } else if (pos == length) {
+                insertLast(item);
+            } else {
+                Node<t> *newNode = new Node<t>;
+                newNode->item = item;
                 Node<t> *cur = front;
                 for (int i = 1; i < pos; i++) cur = cur->next;
 
@@ -78,6 +83,11 @@ public:
                 ++length;
             }
         }
+        catch (exception e){
+            throw "List is Full";
+        }
+    }
+
 
     // Function to remove elements from begin
     void removeFirst()
@@ -143,7 +153,6 @@ public:
             cur->next->prev = cur->prev;
             delete cur;
             --length;
-
         }
     }
 
@@ -210,6 +219,7 @@ public:
         }
     }
 };
+
 int main() {
     doublyLinkedList<int>l;
     l.insertAtPos(0,10);
