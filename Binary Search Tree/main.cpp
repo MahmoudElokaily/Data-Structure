@@ -60,34 +60,42 @@ public:
 
     // Function to insert new Item in BST
     void insert(t newItem){
-        Node<t> * newNode = new Node<t>;
-        newNode->value = newItem;
-        newNode->right = newNode->left = NULL;
-        if (root == NULL){
-            root = newNode;
-        }
-        else {
-            Node<t>* cur = root,* parent = NULL;
-            while (cur != NULL){
-                parent = cur;
-                if (newItem <= cur->value){
-                    cur = cur->left;
-                }
-                else {
-                    cur = cur->right;
-                }
-            }
-            if (newItem <= parent->value){
-                parent->left = newNode;
+        try {
+            Node<t> * newNode = new Node<t>;
+            newNode->value = newItem;
+            newNode->right = newNode->left = NULL;
+            if (root == NULL){
+                root = newNode;
             }
             else {
-                parent->right = newNode;
+                Node<t>* cur = root,* parent = NULL;
+                while (cur != NULL){
+                    parent = cur;
+                    if (newItem <= cur->value){
+                        cur = cur->left;
+                    }
+                    else {
+                        cur = cur->right;
+                    }
+                }
+                if (newItem <= parent->value){
+                    parent->left = newNode;
+                }
+                else {
+                    parent->right = newNode;
+                }
             }
+        }
+        catch (exception e){
+            throw "tree is Full";
         }
     }
 
     // Function to return max element in BST
     t getMax(){
+        if (isEmpty()){
+            throw "tree is Empty";
+        }
         Node<t>* cur = root;
         while (cur->right != NULL){
             cur = cur->right;
@@ -97,6 +105,9 @@ public:
 
     // Function to return min element in BST
     t getMin(){
+        if (isEmpty()){
+            throw "tree is Empty";
+        }
         Node<t>* cur = root;
         while (cur->left != NULL){
             cur = cur->left;
@@ -110,10 +121,9 @@ public:
         Node<t> *current;  //pointer to traverse the tree
         Node<t> *trailCurrent; //pointer behind current
 
-        if(root == NULL)
+        if(isEmpty())
         {
-            cout<<"Cannot delete from the empty tree."<<endl;
-            return;
+            throw "Cannot delete from the empty tree.";
         }
         if(root->value == item)
         {
@@ -152,7 +162,10 @@ public:
             deleteFromTree(trailCurrent->right);
     }
 
-    // Function to know height of Node
+    // Function to know tree is Empty or not
+    bool isEmpty(){
+        return root == NULL;
+    }
 
 };
 int main() {
