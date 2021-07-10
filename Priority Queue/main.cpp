@@ -21,6 +21,9 @@ public:
 
     // Function to add element in PriorityQueue
     void insert(t newItem){
+        if (length >= N){
+            throw "PriorityQueue is Full";
+        }
         PQ[length++] = newItem;
         sort(PQ,PQ+length,greater<>());
     }
@@ -54,7 +57,7 @@ public:
     // Function to retun top element in PriorityQueue
     t top(){
         if (isEmpty()){
-            throw "PriorityQueue is already Empty";
+            throw "PriorityQueue is Empty";
         }
         else {
             return PQ[0];
@@ -72,7 +75,7 @@ int main() {
     p.insert(10);
     p.insert(3);
     p.insert(7);
-    p.clear();
+//    p.clear();
     cout<<p.size()<<endl;
     cout<<p.top()<<endl;
     p.Display();
