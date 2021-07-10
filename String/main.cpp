@@ -15,6 +15,9 @@ public:
 
     // Function to push char at end of string
     void push_back(char s){
+        if (length >= N){
+            throw "String is Full";
+        }
         str[length++] = s;
     }
 
@@ -40,10 +43,11 @@ public:
 
     // Function to swap all string
     void swapString() {
-        if (!isEmpty()) {
-            for (int i = 1, j = length;i<=j;++i,j--){
-                swap(i,j);
-            }
+        if (isEmpty()){
+            throw "String is Empty";
+        }
+        for (int i = 1, j = length;i<=j;++i,j--){
+            swap(i,j);
         }
     }
 
@@ -62,11 +66,17 @@ public:
 
     // Function to get last element
     char back(){
+        if (isEmpty()){
+            throw "String is Empty";
+        }
         return str[length];
     }
 
     // Function to get first element
     char front(){
+        if (isEmpty()){
+            throw "String is Empty";
+        }
         return str[0];
     }
 
