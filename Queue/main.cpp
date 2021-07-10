@@ -20,18 +20,22 @@ public:
 
     // Function to push new elements in front
     void push(t newElement){
-        Node<t>* newNode = new Node<t>;
-        newNode->value = newElement;
-        if (isEmpty()){
-            newNode->nxt = front;
-            front = rear = newNode;
+        try {
+            Node<t> *newNode = new Node<t>;
+            newNode->value = newElement;
+            if (isEmpty()) {
+                newNode->nxt = front;
+                front = rear = newNode;
+            } else {
+                rear->nxt = newNode;
+                newNode->nxt = NULL;
+                rear = newNode;
+            }
+            ++length;
         }
-        else {
-            rear->nxt = newNode;
-            newNode->nxt = NULL;
-            rear = newNode;
+        catch (exception e){
+            throw "Queue is Full";
         }
-        ++length;
     }
 
     // Function to delete element from front
@@ -106,7 +110,6 @@ int main()
    q.push(10);
    q.push(20);
    q.push(30);
-   q.pop();
    q.pop();
    q.pop();
    cout<<q.getFront()<<endl;
