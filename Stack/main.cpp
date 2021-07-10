@@ -20,12 +20,17 @@ public:
         length = 0;
     }
     void push(t newItem){
-        // to add new elements in stack
-        Node<t>* newNode = new Node<t>;
-        newNode->value = newItem;
-        newNode->nxt = top;
-        top = newNode;
-        ++length;
+        // to add new elements in stackCode is executing normally outside a try block.
+        try {
+            Node<t> *newNode = new Node<t>;
+            newNode->value = newItem;
+            newNode->nxt = top;
+            top = newNode;
+            ++length;
+        }
+        catch (exception e){
+            throw "Stack is Full";
+        }
     }
 
     bool isEmpty(){
@@ -54,7 +59,7 @@ public:
     void pop(){
         // delete element from top
         if (isEmpty()){
-            puts("Stack is already empty");
+            throw "Stack is already empty";
         }
         else {
             Node<t>* temp = top;
