@@ -7,7 +7,6 @@
 #include "D:/Data Structure/Node/Node.h"
 
 
-#include "../Node/Node.h"
 #include <iostream>
 
 using namespace std;
