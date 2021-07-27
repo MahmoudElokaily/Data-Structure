@@ -8,9 +8,13 @@ int main() {
     p.insert(10);
     p.insert(3);
     p.insert(7);
+    p.insert(8);
+    p.insert(3);
     p.remove();
-    p.clear();
+
     cout<<p.top()<<endl;
+    cout<<p.size()<<endl;
+    p.clear();
     p.Display();
     return 0;
 }

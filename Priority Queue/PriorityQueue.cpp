@@ -5,27 +5,26 @@
 #include "PriorityQueue.h"
 #include <algorithm>
 using namespace std;
-
+const int max = 1e5;
 template <class t>
 PriorityQueue<t>:: PriorityQueue(){
     length = -1;
-    max = 1e5;
     PQ[max];
 }
 
 // Function to Know PriorityQueue is empty or not
 template <class t>
 bool PriorityQueue<t>:: isEmpty() const{
-    return length <  0;
+    return length < 0;
 }
 
 // Function to add element in PriorityQueue
 template <class t>
 void PriorityQueue<t>:: insert(t newItem){
-    if (length >= max){
+    if (length > max){
         throw "PriorityQueue is Full";
     }
-    PQ[length++] = newItem;
+    PQ[++length] = newItem;
     sort(PQ,PQ+length,greater<>());
 }
 
@@ -39,7 +38,7 @@ void PriorityQueue<t>:: remove(){
     }
     else {
         PQ[0] = 0;
-        sort(PQ,PQ+length,greater<>());
+        sort(PQ,PQ+length+1,greater<>());
         --length;
     }
 }
@@ -48,7 +47,7 @@ void PriorityQueue<t>:: remove(){
 //Function to Display all elements in PriorityQueue
 template <class t>
 void PriorityQueue<t>:: Display(){
-    for (int i=0;i<length;++i){
+    for (int i=0;i<=length;++i){
         cout<<PQ[i]<<" ";
     }
     puts("");
@@ -73,6 +72,6 @@ t PriorityQueue<t>:: top() const{
 
 // Function to clear PriorityQueue
 template <class t>
-void PriorityQueue<t>:: clear(){
+void PriorityQueue<t>:: clear() {
     length = -1;
 }

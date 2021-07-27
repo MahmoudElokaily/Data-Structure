@@ -23,5 +23,4 @@ public:
     t top() const;
     void clear();
 };
-
 #endif //MAIN_CPP_PRIORITYQUEUE_H
