@@ -4,7 +4,6 @@
 
 #include "doublyLinkedList.h"
 
-
 template <class t>
 doublyLinkedList<t>::doublyLinkedList() {
     front = back = nullptr;
@@ -175,8 +174,8 @@ void doublyLinkedList<t>:: erase(int index){
         removeLast();
     }
     else {
-        DoublyNode<t>*cur = front;
-        for (int i=0;i<index;++i) cur = cur->getNxt();
+        DoublyNode<t>*cur = front->getNxt();
+        for (int i=1;i<index;++i) cur = cur->getNxt();
         cur->getPre()->setNxt(cur->getNxt());
         cur->getNxt()->setPre(cur->getPre());
         delete cur;

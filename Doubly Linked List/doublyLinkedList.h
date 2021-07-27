@@ -29,4 +29,6 @@ public:
     bool isEmpty() const;
 };
 
+
+
 #endif //MAIN_CPP_DOUBLYLINKEDLIST_H
