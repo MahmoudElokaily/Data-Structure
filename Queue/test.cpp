@@ -8,12 +8,12 @@ int main()
    q.push(10);
    q.push(20);
    q.push(30);
-   cout<<q.getFront()<<endl;
-   cout<<q.find(10)<<endl;
+   q.pop();
+   cout<<q.find(25)<<endl;
+   q.pop();
    cout<<q.size()<<endl;
-   q.pop();
    q.Display();
-   q.pop();
-   cout<<q.getFront()<<endl;
+   q.clear();
+   q.Display();
     return 0;
 }

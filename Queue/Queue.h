@@ -24,4 +24,5 @@ public:
     t& getFront() const;
 };
 
+
 #endif //MAIN_CPP_QUEUE_H
