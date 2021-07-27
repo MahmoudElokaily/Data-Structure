@@ -177,7 +177,8 @@ void LinkedList<t>::clear(){
 template <class t>
 int LinkedList<t>:: find(t element){
     Node<t>* cur = front;
-    for (int i=1;i<=length;++i){
+    int i;
+    for (i=0;i<length;++i){
         if (cur->getValue() == element){
             return i;
         }
@@ -188,9 +189,9 @@ int LinkedList<t>:: find(t element){
 
 // Function to reverse all elements
 template <class t>
-void LinkedList<t>:: reverse(){
-    Node<t>*cur = front,*pre = nullptr,*next = front->getNxt();
-    while (next != nullptr){
+void LinkedList<t>:: reverse() {
+    Node<t> *cur = front, *pre = nullptr, *next = front->getNxt();
+    while (next != nullptr) {
         next = cur->getNxt();
         cur->setNxt(pre);
         pre = cur;
