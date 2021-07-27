@@ -3,6 +3,7 @@
 //
 
 #include "Node.h"
+template<class t>
 Node<t>::Node() {
     nxt = nullptr;
 }
@@ -19,7 +20,7 @@ void Node <t> :: setValue(t x){
 }
 
 template <class t>
-t& Node <t>:: getValue()const{
+t& Node <t>:: getValue(){
     return value;
 }
 

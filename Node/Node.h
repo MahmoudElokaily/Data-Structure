@@ -14,7 +14,7 @@ public:
     Node();
     Node(t);
     void setValue(t);
-    t& getValue() const;
+    t& getValue();
     void setNxt(Node<t>*);
     Node<t>* getNxt() const;
 };
