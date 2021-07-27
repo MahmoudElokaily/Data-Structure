@@ -1,17 +1,21 @@
 #include <iostream>
-#include "Stack.h"
+#include "string.h"
 
 using namespace std;
 
 int main() {
-    Stack<int> st;
-    st.push(5);
-    st.push(10);
-    st.push(15);
-    st.push(20);
-    st.pop();
-    cout<<st.getTop()<<endl;
-    cout<<st.find(5)<<endl;
-    cout<<st.size()<<endl;
+    String s;
+    s.push_back('a');
+    s.push_back('b');
+    s.push_back('c');
+    s.push_back('d');
+    s.push_back('e');
+    s.push_back('m');
+    s.push_back('n');
+    s.substr(0,5);
+    s.Display();
+//    cout<<s.size()<<endl;
+//    s.swapString();
+//    s.Display();
     return 0;
 }
